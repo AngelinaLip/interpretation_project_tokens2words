@@ -5,13 +5,12 @@
 Мы переносим ключевые эксперименты статьи на **русский язык** и модель **Saiga (Llama 3 8B)** и добавляем собственный эксперимент о **морфологии**: что формирует модель — представление конкретной словоформы («журналами») или слова во всех его формах (лексемы «журнал»).
 
 
-| Ноутбук | Эксперименты | Colab |
-|---|---|---|
-| [`01_word_vs_nonword.ipynb`](notebooks/01_word_vs_nonword.ipynb) | 1–2: слово или псевдослово; контроль на английском | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/saiga-tokens-to-words-ru/blob/main/notebooks/01_word_vs_nonword.ipynb) |
-| [`02_word_retrieval.ipynb`](notebooks/02_word_retrieval.ipynb) | 3: восстановление слова из скрытого состояния (logit lens, Patchscopes) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/saiga-tokens-to-words-ru/blob/main/notebooks/02_word_retrieval.ipynb) |
-| [`03_morphology_lexeme_vs_form.ipynb`](notebooks/03_morphology_lexeme_vs_form.ipynb) | 4–5: словоизменение, словообразование, смысловой контроль | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/saiga-tokens-to-words-ru/blob/main/notebooks/03_morphology_lexeme_vs_form.ipynb) |
+| Ноутбук | Эксперименты |
+|---|---|
+| [`01_word_vs_nonword.ipynb`](notebooks/01_word_vs_nonword.ipynb) | 1–2: слово или псевдослово; контроль на английском | 
+| [`02_word_retrieval.ipynb`](notebooks/02_word_retrieval.ipynb) | 3: восстановление слова из скрытого состояния (logit lens, Patchscopes) | 
+| [`03_morphology_lexeme_vs_form.ipynb`](notebooks/03_morphology_lexeme_vs_form.ipynb) | 4–5: словоизменение, словообразование, смысловой контроль | 
 
-> После загрузки репозитория замените `USERNAME` в ссылках на имя своего аккаунта GitHub.
 
 ---
 
