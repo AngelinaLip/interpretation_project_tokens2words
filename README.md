@@ -176,7 +176,7 @@ saiga-tokens-to-words-ru/
 | `peak_summary.csv` | пиковая точность классификаторов: слой, интервал, значения на слое 0 и последнем слое |
 | `last_vs_penultimate.csv` | последний против предпоследнего токена по слоям: разница и p-значения |
 | `english_vs_russian.csv` | эксперимент 2: сводное сравнение русского и английского |
-| `figures/probe_accuracy_by_layer.png`, `figures/english_vs_russian.png` | графики |
+| `probe_accuracy_by_layer.png`, `english_vs_russian.png` | графики |
 
 ### Эксперимент 3: восстановление слова — [`results/exp3_word_retrieval/`](results/exp3_word_retrieval/)
 
@@ -197,14 +197,14 @@ saiga-tokens-to-words-ru/
 
 | Файл | Содержание |
 |---|---|
-| `03_morphology_lexeme_vs_form_executed.ipynb` | выполненный ноутбук экспериментов 4–5 |
+| `res_03_morphology_lexeme_vs_form.ipynb` | выполненный ноутбук экспериментов 4–5 |
 | `noun_forms.csv` | 1789 форм существительных: лемма, форма, падеж, число, токены |
 | `pair_similarity_by_layer.csv` | средняя похожесть пар типов А1, А2, Б, В, Г по слоям |
 | `nearest_neighbor_lexeme_vs_form.csv` | задача ближайшего соседа: доля «то же слово» по слоям с интервалами |
 | `all_similarity_by_layer.csv` | похожесть всех типов пар, включая словообразовательные и супплетивные |
 | `criterion_by_layer.csv` | критерий лексемы по слоям: какие условия выполнены |
 | `semantic_control_by_layer.csv` | эксперимент 5: похожесть синонимов и слов одной смысловой группы по слоям |
-| `figures/morphology_results.png`, `figures/semantic_control.png` | графики |
+| `morphology_results.png`, `semantic_control.png` | графики |
 
 
 ## Основные результаты
