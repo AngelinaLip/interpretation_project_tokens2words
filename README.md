@@ -1,4 +1,4 @@
-# Внутренний словарь русскоязычной языковой модели: детокенизация, словоизменение и словообразование
+<img width="208" height="159" alt="image" src="https://github.com/user-attachments/assets/4486ba4d-6bd1-4551-9268-78c5e90107c7" /># Внутренний словарь русскоязычной языковой модели: детокенизация, словоизменение и словообразование
 
 Исследовательский проект на основе статьи **[From Tokens to Words: On the Inner Lexicon of LLMs](https://arxiv.org/abs/2410.05864)** (Kaplan, Oren, Reif, Schwartz; ICLR 2025). Код авторов: **[schwartz-lab-NLP/Tokens2Words](https://github.com/schwartz-lab-NLP/Tokens2Words)**.
 
@@ -63,8 +63,47 @@ saiga-tokens-to-words-ru/
 │   ├── 01_word_vs_nonword.ipynb             эксперименты 1–2
 │   ├── 02_word_retrieval.ipynb              эксперимент 3
 │   └── 03_morphology_lexeme_vs_form.ipynb   эксперименты 4–5
-├── results/
-│   └── figures/                             графики из наших запусков
+├── results/                                       результаты наших запусков
+│   ├── exp1_2_word_vs_nonword/
+│   │   ├── res_01_word_vs_nonword.ipynb           выполненный ноутбук
+│   │   ├── russian_words_and_pseudowords.csv      слова и псевдослова
+│   │   ├── pseudoword_generation_stats.csv        статистика генерации псевдослов
+│   │   ├── probe_accuracy_by_layer_all_runs.csv   точность по слоям, все зёрна
+│   │   ├── probe_accuracy_by_layer_mean_ci.csv    точность по слоям, среднее и 95% ДИ
+│   │   ├── permutation_null_by_layer.csv          шумовой уровень
+│   │   ├── peak_summary.csv                       пиковые значения
+│   │   ├── last_vs_penultimate.csv                последний против предпоследнего токена
+│   │   ├── english_vs_russian.csv                 эксперимент 2: сравнение языков
+│   │   ├── probe_accuracy_by_layer.png
+│   │   ├── english_vs_russian.png
+│   ├── exp3_word_retrieval/
+│   │   ├── res_02_word_retrieval.ipynb            выполненный ноутбук
+│   │   ├── split_words.csv                        разрезанные слова
+│   │   ├── typo_words.csv                         слова с опечатками
+│   │   ├── logit_lens_by_layer.csv                logit lens по слоям
+│   │   ├── patchscopes_by_layer.csv               Patchscopes по слоям
+│   │   ├── patchscopes_outputs.csv                ответы модели в Patchscopes
+│   │   ├── summary.csv                            сводная таблица
+│   │   ├── section4_retrieval_by_layer.png
+│   │   ├── section4_rescored.png
+│   ├── exp4_5_morphology/
+│   │   ├── res_03_morphology_lexeme_vs_form.ipynb выполненный ноутбук
+│   │   ├── noun_forms.csv                         формы существительных
+│   │   ├── pair_similarity_by_layer.csv           похожесть пар А1–Г по слоям
+│   │   ├── nearest_neighbor_lexeme_vs_form.csv    задача ближайшего соседа
+│   │   ├── all_similarity_by_layer.csv            все типы пар
+│   │   ├── criterion_by_layer.csv                 критерий лексемы по слоям
+│   │   ├── semantic_control_by_layer.csv          эксперимент 5: смысловой контроль
+│   │   ├── morphology_results.png
+│   │   ├── semantic_control.png
+│   └── figures/                                   графики для README и препринта
+│       ├── exp1_word_nonword.png
+│       ├── exp2_ru_vs_en.png
+│       ├── exp3_rescored.png
+│       ├── exp3_strict.png
+│       ├── exp4_morphology.png
+│       ├── exp4_panels.png
+│       └── exp5_semantic.png
 ├── requirements.txt
 └── README.md
 ```
@@ -117,6 +156,56 @@ saiga-tokens-to-words-ru/
 - **Результаты сохраняются** в `/content/saiga_morphology_results`.
 </details>
 
+## Результаты запусков
+
+Папка [`results/`](results/) содержит результаты наших запусков в Google Colab (GPU T4): выполненные ноутбуки с сохранёнными выводами ячеек, таблицы CSV, которые сохраняют ноутбуки, графики и текстовые выводы. Чистые ноутбуки для повторного запуска лежат в [`notebooks/`](notebooks/); код в них тот же, из него только удалены комментарии.
+
+В выполненных ноутбуках эксперимент 2, пересчёт метрик эксперимента 3 и эксперимент 5 идут отдельными ячейками в конце, так как они запускались после основной части. Из выводов удалены индикаторы загрузки и служебные виджеты Colab, остальное сохранено без изменений.
+
+### Эксперименты 1–2: слово или псевдослово — [`results/exp1_2_word_vs_nonword/`](results/exp1_2_word_vs_nonword/)
+
+| Файл | Содержание |
+|---|---|
+| `res_01_word_vs_nonword_executed.ipynb` | выполненный ноутбук экспериментов 1–2 |
+| `russian_words_and_pseudowords.csv` | отобранные слова и псевдослова: текст, токены, число токенов, набор (зерно) |
+| `pseudoword_generation_stats.csv` | статистика генерации псевдослов: число попыток и отказов по каждой причине |
+| `probe_accuracy_by_layer_all_runs.csv` | точность всех классификаторов по слоям для каждого зерна и условия |
+| `probe_accuracy_by_layer_mean_ci.csv` | точность, усреднённая по 5 зёрнам, с 95%-ми доверительными интервалами |
+| `permutation_null_by_layer.csv` | шумовой уровень по слоям (перемешанные метки) |
+| `peak_summary.csv` | пиковая точность классификаторов: слой, интервал, значения на слое 0 и последнем слое |
+| `last_vs_penultimate.csv` | последний против предпоследнего токена по слоям: разница и p-значения |
+| `english_vs_russian.csv` | эксперимент 2: сводное сравнение русского и английского |
+| `figures/probe_accuracy_by_layer.png`, `figures/english_vs_russian.png` | графики |
+
+### Эксперимент 3: восстановление слова — [`results/exp3_word_retrieval/`](results/exp3_word_retrieval/)
+
+| Файл | Содержание |
+|---|---|
+| `res_02_word_retrieval.ipynb` | выполненный ноутбук эксперимента 3 с пересчётом метрик |
+| `split_words.csv` | искусственно разрезанные слова: слово, куски, токены |
+| `typo_words.csv` | слова с опечатками: исходное слово, опечатка, токены |
+| `logit_lens_by_layer.csv` | доля восстановленных слов по слоям (разрезанные слова и опечатки), по слою и накопленная |
+| `patchscopes_by_layer.csv` | доля слов, восстановленных Patchscopes, по слоям |
+| `patchscopes_outputs.csv` | все ответы модели в Patchscopes: слово, слой, текст ответа |
+| `summary.csv` | сводная таблица трёх опытов вместе с числами статьи |
+| `figures/section4_retrieval_by_layer.png`, `figures/section4_rescored.png` | графики: строгие метрики и после пересчёта |
+
+Результаты пересчёта (top-10/100, алфавит лучшего токена, мягкая проверка Patchscopes) в CSV не сохранялись, они приведены в выполненном ноутбуке.
+
+### Эксперименты 4–5: словоформа, лексема и значение — [`results/exp4_5_morphology/`](results/exp4_5_morphology/)
+
+| Файл | Содержание |
+|---|---|
+| `03_morphology_lexeme_vs_form_executed.ipynb` | выполненный ноутбук экспериментов 4–5 |
+| `noun_forms.csv` | 1789 форм существительных: лемма, форма, падеж, число, токены |
+| `pair_similarity_by_layer.csv` | средняя похожесть пар типов А1, А2, Б, В, Г по слоям |
+| `nearest_neighbor_lexeme_vs_form.csv` | задача ближайшего соседа: доля «то же слово» по слоям с интервалами |
+| `all_similarity_by_layer.csv` | похожесть всех типов пар, включая словообразовательные и супплетивные |
+| `criterion_by_layer.csv` | критерий лексемы по слоям: какие условия выполнены |
+| `semantic_control_by_layer.csv` | эксперимент 5: похожесть синонимов и слов одной смысловой группы по слоям |
+| `figures/morphology_results.png`, `figures/semantic_control.png` | графики |
+
+
 ## Основные результаты
 
 Графики ниже — из наших запусков на Colab T4.
@@ -167,7 +256,7 @@ jupyter notebook notebooks/
 
 При подготовке проекта использовался ассистент **Claude (Anthropic)** в приложении Claude. С его помощью:
 
-- обсуждались план экспериментов и модификации методики: каноническая токенизация псевдослов, словарная фильтрация, несколько случайных выборок и перестановочный тест, контроль на английском, ранговые метрики и мягкая проверка Patchscopes, смысловой контроль. Идея эксперимента о словоизменении и словообразовании была предложена преподавателем курса;
+- обсуждались план экспериментов и модификации методики: каноническая токенизация псевдослов, словарная фильтрация, несколько случайных выборок и перестановочный тест, контроль на английском, ранговые метрики и мягкая проверка Patchscopes, смысловой контроль. Идея эксперимента о словоизменении и словообразовании была предложена преподавателем курса и развернута авторами проекта (Липина, Мальцева, Чугаева);
 - написан и отлажен код ноутбуков Google Colab на основе кода [репозитория авторов статьи](https://github.com/schwartz-lab-NLP/Tokens2Words);
 - интерпретировались результаты и выполнялся поиск литературы;
 - подготовлены черновики текста препринта, этого README, презентации и схематических иллюстраций.
