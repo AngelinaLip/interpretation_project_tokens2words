@@ -189,7 +189,7 @@ saiga-tokens-to-words-ru/
 | `patchscopes_by_layer.csv` | доля слов, восстановленных Patchscopes, по слоям |
 | `patchscopes_outputs.csv` | все ответы модели в Patchscopes: слово, слой, текст ответа |
 | `summary.csv` | сводная таблица трёх опытов вместе с числами статьи |
-| `figures/section4_retrieval_by_layer.png`, `figures/section4_rescored.png` | графики: строгие метрики и после пересчёта |
+| `section4_retrieval_by_layer.png`, `section4_rescored.png` | графики: строгие метрики и после пересчёта |
 
 Результаты пересчёта (top-10/100, алфавит лучшего токена, мягкая проверка Patchscopes) в CSV не сохранялись, они приведены в выполненном ноутбуке.
 
