@@ -59,7 +59,7 @@
 ## Структура репозитория
 
 ```
-saiga-tokens-to-words-ru/
+interpretation_project_tokens2words/
 ├── notebooks/
 │   ├── 01_word_vs_nonword.ipynb             эксперименты 1–2
 │   ├── 02_word_retrieval.ipynb              эксперимент 3
@@ -106,6 +106,7 @@ saiga-tokens-to-words-ru/
 │       ├── exp4_panels.png
 │       └── exp5_semantic.png
 ├── requirements.txt
+├── preprint.pdf
 └── README.md
 ```
 
@@ -167,7 +168,7 @@ saiga-tokens-to-words-ru/
 
 | Файл | Содержание |
 |---|---|
-| `res_01_word_vs_nonword_executed.ipynb` | выполненный ноутбук экспериментов 1–2 |
+| `res_01_word_vs_nonword.ipynb` | выполненный ноутбук экспериментов 1–2 |
 | `russian_words_and_pseudowords.csv` | отобранные слова и псевдослова: текст, токены, число токенов, набор (зерно) |
 | `pseudoword_generation_stats.csv` | статистика генерации псевдослов: число попыток и отказов по каждой причине |
 | `probe_accuracy_by_layer_all_runs.csv` | точность всех классификаторов по слоям для каждого зерна и условия |
@@ -232,13 +233,15 @@ saiga-tokens-to-words-ru/
 Подробные таблицы и обсуждение — в препринте.
 
 
+## Установка и запуск
+
 ### Локально
 
 Нужен GPU NVIDIA с CUDA (мы запускали на T4 с 16 ГБ видеопамяти).
 
 ```bash
-git clone https://github.com/USERNAME/saiga-tokens-to-words-ru.git
-cd saiga-tokens-to-words-ru
+git clone https://github.com/AngelinaLip/interpretation_project_tokens2words.git
+cd interpretation_project_tokens2words
 pip install -r requirements.txt
 jupyter notebook notebooks/
 ```
@@ -285,7 +288,7 @@ jupyter notebook notebooks/
   title  = {Внутренний словарь русскоязычной языковой модели: детокенизация, словоизменение и словообразование},
   author = {Мальцева Анастасия, Чугаева Кира, Липина Ангелина},
   year   = {2026},
-  url    = {https://github.comAngelinaLip/interpretation_project_tokens2words}
+  url    = {https://github.com/AngelinaLip/interpretation_project_tokens2words}
 }
 ```
 
