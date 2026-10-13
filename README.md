@@ -1,4 +1,4 @@
-<img width="208" height="159" alt="image" src="https://github.com/user-attachments/assets/4486ba4d-6bd1-4551-9268-78c5e90107c7" /># Внутренний словарь русскоязычной языковой модели: детокенизация, словоизменение и словообразование
+# Внутренний словарь русскоязычной языковой модели: детокенизация, словоизменение и словообразование
 
 Исследовательский проект на основе статьи **[From Tokens to Words: On the Inner Lexicon of LLMs](https://arxiv.org/abs/2410.05864)** (Kaplan, Oren, Reif, Schwartz; ICLR 2025). Код авторов: **[schwartz-lab-NLP/Tokens2Words](https://github.com/schwartz-lab-NLP/Tokens2Words)**.
 
