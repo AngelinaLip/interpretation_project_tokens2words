@@ -1,0 +1,14 @@
+torch
+transformers==4.48.3
+accelerate>=1.2.0
+bitsandbytes>=0.45.0
+wordfreq>=3.1.1
+pymorphy3
+pymorphy3-dicts-ru
+scikit-learn
+scipy
+numpy
+pandas
+matplotlib
+tqdm
+jupyter
